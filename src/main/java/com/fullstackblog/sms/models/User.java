@@ -3,14 +3,11 @@ package com.fullstackblog.sms.models;
 import com.fullstackblog.sms.models.audit.DateAudit;
 import org.hibernate.annotations.NaturalId;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Collection;
 
 @Entity
 public class User extends DateAudit {
@@ -28,10 +25,14 @@ public class User extends DateAudit {
     @Email
     private String email;
 
-
     @NotBlank(message = "Password is required.")
     @Size(max = 255)
     private String password;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 
     public User() {
     }
