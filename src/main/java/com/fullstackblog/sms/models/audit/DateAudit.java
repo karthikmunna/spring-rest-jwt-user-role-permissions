@@ -25,7 +25,7 @@ public abstract class DateAudit implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at",nullable = false)
     @LastModifiedDate
-    private Date UpdatedAt;
+    private Date updatedAt;
 
     public Date getCreatedAt() {
         return createdAt;
@@ -36,10 +36,10 @@ public abstract class DateAudit implements Serializable {
     }
 
     public Date getUpdatedAt() {
-        return UpdatedAt;
+        return updatedAt;
     }
 
     public void setUpdatedAt(Date updatedAt) {
-        UpdatedAt = updatedAt;
+        this.updatedAt = updatedAt;
     }
 }
