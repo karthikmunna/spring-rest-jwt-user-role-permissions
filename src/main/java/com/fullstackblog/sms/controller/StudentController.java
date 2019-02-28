@@ -11,6 +11,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +44,22 @@ public class StudentController {
     public ResponseEntity<?> getStudentByNic(@PathVariable String nic){
         Student student = studentService.findStudentByNic(nic);
         return new ResponseEntity<>(student,HttpStatus.OK);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> updateStudent(@PathVariable Long id, @Valid @RequestBody Student student, BindingResult result){
+        ResponseEntity<?> errorMap = mapValidationErrorService.mapValidations(result);
+        if (errorMap!=null) return errorMap;
+
+        Student updatedStudent = studentService.saveOrUpdateStudent(student);
+        return new ResponseEntity<>(updatedStudent,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteStudentById(@PathVariable Long id){
+        Student student = studentService.findStudentById(id);
+        studentService.deleteStudentById(id);
+        return ResponseEntity.ok("Student with id "+id.toString()+" deleted successfully !");
     }
 
 }

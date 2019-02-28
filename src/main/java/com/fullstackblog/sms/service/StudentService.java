@@ -6,6 +6,7 @@ import com.fullstackblog.sms.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,5 +27,17 @@ public class StudentService {
         Student student = studentRepository.findByNic(nic).orElseThrow(
                 ()-> new ResourceNotFoundException("Student","nic",nic));
         return student;
+    }
+
+    public Student findStudentById(Long id){
+        Student student = studentRepository.findById(id).orElseThrow(
+                ()-> new ResourceNotFoundException("Student","id",id)
+        );
+        return student;
+    }
+
+    public void deleteStudentById(Long id){
+        Student student = findStudentById(id);
+        studentRepository.delete(student);
     }
 }
