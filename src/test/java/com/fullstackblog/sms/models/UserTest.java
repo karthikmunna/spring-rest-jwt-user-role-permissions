@@ -23,6 +23,11 @@ public class UserTest {
 
     @Test
     public void setUsername() {
+        String username = "admin";
+
+        user.setUsername(username);
+
+        assertEquals(username,user.getUsername());
     }
 
     @Test
