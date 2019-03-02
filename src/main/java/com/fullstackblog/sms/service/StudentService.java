@@ -11,33 +11,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StudentService {
-    @Autowired
-    StudentRepository studentRepository;
+public interface StudentService {
 
-    public Student saveOrUpdateStudent(Student student){
-        return studentRepository.save(student);
-    }
+    public Student saveOrUpdateStudent(Student student);
 
-    public List<Student> findAllStudents(){
-        return studentRepository.findAll();
-    }
+    public List<Student> findAllStudents();
 
-    public Student findStudentByNic(String nic){
-        Student student = studentRepository.findByNic(nic).orElseThrow(
-                ()-> new ResourceNotFoundException("Student","nic",nic));
-        return student;
-    }
+    public Student findStudentByNic(String nic);
 
-    public Student findStudentById(Long id){
-        Student student = studentRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("Student","id",id)
-        );
-        return student;
-    }
+    public Student findStudentById(Long id);
 
-    public void deleteStudentById(Long id){
-        Student student = findStudentById(id);
-        studentRepository.delete(student);
-    }
+    public void deleteStudentById(Long id);
 }
