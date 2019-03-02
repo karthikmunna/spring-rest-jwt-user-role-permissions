@@ -65,12 +65,6 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>pro-plugin</artifactId>
-            <version>2.1.0</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
