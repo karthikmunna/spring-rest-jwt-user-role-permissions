@@ -32,5 +32,9 @@ public class UserTest {
 
     @Test
     public void getRole() {
+        Role role = new Role();
+        user.setRole(role);
+
+        assertEquals(role,user.getRole());
     }
 }
