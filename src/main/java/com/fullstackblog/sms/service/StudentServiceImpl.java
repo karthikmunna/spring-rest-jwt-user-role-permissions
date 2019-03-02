@@ -3,10 +3,11 @@ package com.fullstackblog.sms.service;
 import com.fullstackblog.sms.exceptions.ResourceNotFoundException;
 import com.fullstackblog.sms.models.Student;
 import com.fullstackblog.sms.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class StudentServiceImpl implements StudentService {
 
     StudentRepository studentRepository;

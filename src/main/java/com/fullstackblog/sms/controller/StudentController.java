@@ -20,8 +20,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
-    @Autowired
-    StudentService studentService;
+
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @Autowired
     MapValidationErrorService mapValidationErrorService;
