@@ -2,11 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
-version: 2.1
-
-orbs:
-  codecov: codecov/codecov@1.0.2
-
+version: 2
 jobs:
   build:
     docker:
@@ -42,6 +38,4 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests!
-      - run: mvn integration-test cobertura:cobertura
-      - codecov/upload:
-          file:test
+      - run: mvn integration-test
